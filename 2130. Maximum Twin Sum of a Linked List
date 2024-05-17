@@ -1,0 +1,22 @@
+    class Solution {
+public:
+    int pairSum(ListNode* head) {
+        // value  could store in vector
+        vector<int> values;
+        ListNode* current = head;
+        while (current) {
+            values.push_back(current->val);
+            current = current->next;
+        }
+        // Step 2: with the help of traversing it will be easy
+        int n = values.size();
+        int max_twin_sum = 0;
+        for (int i = 0; i < n / 2; ++i) {
+            int twin_sum = values[i] + values[n - 1 - i];
+            if (twin_sum > max_twin_sum) {
+                max_twin_sum = twin_sum;
+            }
+        }
+        return max_twin_sum;
+    }
+};
